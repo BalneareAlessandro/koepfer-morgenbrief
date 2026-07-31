@@ -1,0 +1,48 @@
+name: Sync feedback summary
+
+on:
+  schedule:
+    - cron: "30 4 * * *"
+    - cron: "30 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: feedback-summary
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Fetch anonymized feedback summary
+        env:
+          SUPABASE_URL: https://zwzgbfyjqmmxzsonpdfj.supabase.co
+          SUPABASE_PUBLISHABLE_KEY: sb_publishable_x2Nv1tiZg2k8A0nwNC7qhA_K2QwWpAM
+        run: |
+          curl --fail --silent --show-error \
+            --request POST \
+            --url "$SUPABASE_URL/rest/v1/rpc/feedback_summary" \
+            --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+            --header "Content-Type: application/json" \
+            --data '{}' \
+            | jq 'sort_by(.edition_date, .article_id)' \
+            > feedback-summary.new.json
+          test -s feedback-summary.new.json
+          mv feedback-summary.new.json feedback-summary.json
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet -- feedback-summary.json; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feedback-summary.json
+          git commit -m "Update feedback summary"
+          git push
