@@ -20,6 +20,12 @@
     .source-note{padding:16px 18px;margin-top:18px;border:1px solid #ded5c9;background:#f9f5ee;border-radius:5px;color:var(--muted);font-size:.82rem}.sources{columns:2;column-gap:36px;padding-left:1.25rem}.sources li{break-inside:avoid;margin-bottom:9px;color:#3e4a53;font-size:.84rem}.sources a{color:var(--blue);overflow-wrap:anywhere}footer{padding:24px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem}
     @media(max-width:900px){.lead-grid,.dashboard,.supplier{grid-template-columns:1fr}.scorecard{grid-template-columns:repeat(3,1fr)}.story,.story.wide{grid-column:span 6}}@media(max-width:640px){.utility .hide-mobile,.brand-side{display:none}.brand{grid-template-columns:auto 1fr}.brand h1{text-align:left;font-size:2.6rem}.brand h1 span{letter-spacing:.18em}.alert{grid-template-columns:1fr}.lead{min-height:650px}.scorecard{grid-template-columns:1fr}.story,.story.wide{grid-column:1/-1}.section-head{align-items:flex-start;flex-direction:column;gap:7px}.sources{columns:1}.bar-row{grid-template-columns:82px 1fr 44px}.feedback{align-items:flex-start;flex-direction:column}.feedback-actions{width:100%}.feedback-status{margin-left:auto}}@media print{body{background:#fff}nav,.alert,.feedback{display:none}.story,.supplier-card,.panel{break-inside:avoid;box-shadow:none}a{text-decoration:none}}
   </style>
+  <style>
+    .wish-launch{position:fixed;right:22px;bottom:22px;z-index:40;border:0;border-radius:999px;padding:13px 18px;background:var(--blue);color:#fff;font-weight:800;box-shadow:0 12px 30px rgba(15,28,39,.25);cursor:pointer}.wish-launch:hover{filter:brightness(1.08);transform:translateY(-1px)}
+    .wish-dialog{width:min(560px,calc(100% - 28px));border:0;border-radius:8px;padding:0;background:var(--card);color:var(--ink);box-shadow:0 24px 70px rgba(15,28,39,.35)}.wish-dialog::backdrop{background:rgba(15,28,39,.66);backdrop-filter:blur(3px)}.wish-form{padding:25px}.wish-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}.wish-head h2{margin:0 0 5px;font:800 1.8rem/1.1 Georgia,serif}.wish-head p{margin:0;color:var(--muted);font-size:.86rem}.wish-close{border:0;background:transparent;font-size:1.5rem;cursor:pointer;color:var(--muted)}
+    .wish-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.wish-field{display:grid;gap:6px}.wish-field.full{grid-column:1/-1}.wish-field label{font-size:.76rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase}.wish-field select,.wish-field input{width:100%;border:1px solid var(--line);border-radius:5px;background:#fff;padding:11px 12px;color:var(--ink);font:inherit}.wish-field input:focus,.wish-field select:focus{outline:3px solid rgba(36,95,132,.18);border-color:var(--blue)}.wish-note{margin:4px 0 0;color:var(--muted);font-size:.72rem}.wish-submit{width:100%;margin-top:18px;border:0;border-radius:5px;padding:12px;background:var(--green);color:#fff;font-weight:800;cursor:pointer}.wish-submit:disabled{opacity:.6;cursor:wait}.wish-message{min-height:20px;margin:10px 0 0;text-align:center;font-size:.78rem;font-weight:700}
+    @media(max-width:640px){.wish-grid{grid-template-columns:1fr}.wish-field.full{grid-column:auto}.wish-launch{right:14px;bottom:14px}}@media print{.wish-launch,.wish-dialog{display:none}}
+  </style>
 </head>
 <body data-edition-date="2026-07-31">
   <header class="masthead">
@@ -240,6 +246,23 @@
     <p><strong>Methodik:</strong> Ausschließlich Meldungen mit Veröffentlichungs- und Ereignisdatum innerhalb der letzten zwei Kalendermonate; priorisiert wurden die letzten 24–72 Stunden. Themen und URLs der Ausgabe vom 30. Juli wurden abgeglichen. Wiederholungen wurden ausgeschlossen; die neue deutsche KI-Aufsicht ist als substanzielles Update gekennzeichnet.</p>
     <p>Redaktionelle Risikoeinschätzung, keine Rechts-, Investitions- oder Liefergarantie. Quellen können nach Veröffentlichung aktualisiert werden.</p>
   </footer>
+  <button class="wish-launch" type="button" aria-haspopup="dialog">✦ Themenwunsch</button>
+  <dialog class="wish-dialog" aria-labelledby="wish-title">
+    <form class="wish-form" method="dialog">
+      <div class="wish-head">
+        <div><h2 id="wish-title">Redaktionswunsch</h2><p>Steuert die Auswahl der kommenden Morgenbriefe.</p></div>
+        <button class="wish-close" type="button" aria-label="Schließen">×</button>
+      </div>
+      <div class="wish-grid">
+        <div class="wish-field"><label for="wish-direction">Wunsch</label><select id="wish-direction" required><option value="extra">Extra-News-Tab</option><option value="more">Mehr davon</option><option value="less">Weniger davon</option></select></div>
+        <div class="wish-field"><label for="wish-kind">Bereich</label><select id="wish-kind" required><option value="topic">Thema</option><option value="company">Firma</option><option value="supplier">Lieferant</option><option value="industry">Branche</option></select></div>
+        <div class="wish-field full"><label for="wish-target">Thema, Firma oder Lieferant</label><input id="wish-target" maxlength="120" minlength="2" required placeholder="z. B. Wärmebehandlung, Bosch, Aluminiumpreise"></div>
+      </div>
+      <p class="wish-note">Bitte keine vertraulichen, personenbezogenen oder internen Daten eingeben. Wünsche beeinflussen die Gewichtung, ersetzen aber keine kritischen Pflichtmeldungen.</p>
+      <button class="wish-submit" type="submit">Wunsch speichern</button>
+      <p class="wish-message" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
   <script>
     (() => {
       const SUPABASE_URL = "https://zwzgbfyjqmmxzsonpdfj.supabase.co";
@@ -343,6 +366,41 @@
 
       document.querySelectorAll(".story").forEach((story) => {
         createFeedback(story);
+      });
+
+      const wishDialog = document.querySelector(".wish-dialog");
+      const wishForm = document.querySelector(".wish-form");
+      const wishMessage = document.querySelector(".wish-message");
+      document.querySelector(".wish-launch")?.addEventListener("click", () => wishDialog?.showModal());
+      document.querySelector(".wish-close")?.addEventListener("click", () => wishDialog?.close());
+
+      wishForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const submit = wishForm.querySelector(".wish-submit");
+        const direction = document.querySelector("#wish-direction").value;
+        const kind = document.querySelector("#wish-kind").value;
+        const target = document.querySelector("#wish-target").value.trim().replace(/\s+/g, " ").slice(0, 120);
+        if (target.length < 2) return;
+        submit.disabled = true;
+        wishMessage.textContent = "Speichert …";
+        try {
+          const sessionHash = await hash(sessionId);
+          const requestId = `request://${direction}/${kind}/${encodeURIComponent(target.toLocaleLowerCase("de-DE"))}`;
+          const response = await fetch(`${SUPABASE_URL}/rest/v1/article_feedback`, {
+            method: "POST",
+            headers: {"apikey": SUPABASE_KEY,"Content-Type": "application/json","Prefer": "return=minimal"},
+            body: JSON.stringify({article_id:requestId,edition_date:editionDate,topic:`Redaktionswunsch · ${direction} · ${kind} · ${target}`.slice(0, 200),vote:direction === "less" ? -1 : 1,session_hash:sessionHash})
+          });
+          if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+          wishMessage.textContent = "Gespeichert – wird in der nächsten Ausgabe berücksichtigt.";
+          wishForm.reset();
+          setTimeout(() => wishDialog.close(), 1600);
+        } catch (error) {
+          wishMessage.textContent = "Nicht gespeichert – bitte erneut versuchen.";
+          console.warn("KOEPFER editorial request:", error);
+        } finally {
+          submit.disabled = false;
+        }
       });
     })();
   </script>
