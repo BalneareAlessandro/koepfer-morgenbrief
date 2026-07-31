@@ -25,12 +25,14 @@ jobs:
           SUPABASE_URL: https://zwzgbfyjqmmxzsonpdfj.supabase.co
           SUPABASE_PUBLISHABLE_KEY: sb_publishable_x2Nv1tiZg2k8A0nwNC7qhA_K2QwWpAM
         run: |
+          FROM_DATE="$(date -u -d '180 days ago' +%F)"
+          TO_DATE="$(date -u +%F)"
           curl --fail --silent --show-error \
             --request POST \
             --url "$SUPABASE_URL/rest/v1/rpc/feedback_summary" \
             --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
             --header "Content-Type: application/json" \
-            --data '{}' \
+            --data "{\"p_from\":\"$FROM_DATE\",\"p_to\":\"$TO_DATE\"}" \
             | jq 'sort_by(.edition_date, .article_id)' \
             > feedback-summary.new.json
           test -s feedback-summary.new.json
