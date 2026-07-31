@@ -5,54 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KOEPFER Morgenbrief – Archiv</title>
   <style>
-    :root{--ink:#17212b;--muted:#67727d;--paper:#f4f0e8;--card:#fffdf8;--line:#d8d0c2;--red:#a82d32;--blue:#245f84;--night:#0f1c27;--shadow:0 14px 38px rgba(30,35,38,.1)}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(rgba(255,255,255,.34),rgba(255,255,255,.34)),var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}.wrap{width:min(920px,calc(100% - 34px));margin:0 auto}.utility{padding:11px 0 9px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}.masthead{border-bottom:1px solid var(--line);background:rgba(255,253,248,.92)}.brand{display:flex;align-items:center;gap:18px;padding:26px 0}.mark{width:52px;height:52px;border:2px solid var(--night);border-radius:50%;display:grid;place-items:center;font-weight:900}.brand h1{margin:0;color:var(--night);font:800 clamp(2.1rem,6vw,4.4rem)/.95 Georgia,serif;letter-spacing:-.04em}.brand h1 span{display:block;margin-top:8px;color:var(--red);font:700 .22em/1.2 Inter,sans-serif;letter-spacing:.28em;text-transform:uppercase}main{padding:34px 0 70px}.back{display:inline-block;margin-bottom:28px;color:var(--blue);font-weight:800}.intro{margin-bottom:24px;padding-bottom:14px;border-bottom:3px solid var(--night)}.intro h2{margin:0 0 8px;font:800 2rem Georgia,serif}.intro p{margin:0;color:var(--muted)}.issues{display:grid;gap:12px}.issue{display:grid;grid-template-columns:140px 1fr auto;gap:18px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:6px;background:var(--card);box-shadow:0 8px 24px rgba(30,35,38,.05);text-decoration:none}.issue time{color:var(--muted);font-size:.82rem;font-weight:800;letter-spacing:.06em}.issue b{font:800 1.25rem Georgia,serif}.issue span{color:var(--blue);font-weight:900}.empty{padding:24px;border:1px solid var(--line);background:var(--card);color:var(--muted)}footer{padding:24px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem}@media(max-width:620px){.issue{grid-template-columns:1fr;gap:5px}.issue span{display:none}}
+    :root{--ink:#17212b;--muted:#67727d;--paper:#f4f0e8;--card:#fffdf8;--line:#d8d0c2;--red:#a82d32;--blue:#245f84;--night:#0f1c27;--shadow:0 16px 42px rgba(30,35,38,.12)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:linear-gradient(rgba(255,255,255,.34),rgba(255,255,255,.34)),var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}.wrap{width:min(1180px,calc(100% - 34px));margin:0 auto}.masthead{border-bottom:1px solid var(--line);background:rgba(255,253,248,.94)}.utility{display:flex;justify-content:space-between;gap:20px;padding:10px 0 8px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}.brand{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:20px;padding:24px 0}.mark{width:54px;height:54px;border:2px solid var(--night);border-radius:50%;display:grid;place-items:center;font-weight:900}.brand h1{margin:0;color:var(--night);font:800 clamp(2.1rem,6vw,4.5rem)/.92 Georgia,serif;letter-spacing:-.04em}.brand h1 span{display:block;margin-top:9px;color:var(--red);font:700 .22em/1.2 Inter,sans-serif;letter-spacing:.28em;text-transform:uppercase}.current{padding:10px 14px;border:1px solid var(--night);border-radius:999px;color:var(--night);font-size:.78rem;font-weight:900;text-decoration:none}.current:hover{color:#fff;background:var(--night)}
+    main{padding:34px 0 72px}.intro{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:23px;padding-bottom:14px;border-bottom:3px solid var(--night)}.intro h2{margin:0 0 6px;font:800 clamp(1.8rem,4vw,2.7rem) Georgia,serif}.intro p{margin:0;color:var(--muted)}.count{color:var(--red);font-size:.75rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.issue{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:7px;background:var(--card);box-shadow:0 8px 24px rgba(30,35,38,.06);text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}.issue:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.preview{position:relative;height:225px;overflow:hidden;border-bottom:1px solid var(--line);background:#e9e2d7;pointer-events:none}.preview iframe{position:absolute;top:0;left:0;width:1250px;height:1500px;border:0;transform:scale(.31);transform-origin:top left;background:#fff}.preview:after{content:"";position:absolute;inset:auto 0 0;height:35%;background:linear-gradient(transparent,rgba(15,28,39,.16))}.issue-body{padding:18px 19px 20px}.issue time{display:block;margin-bottom:6px;color:var(--red);font-size:.76rem;font-weight:900;letter-spacing:.09em}.issue h3{margin:0 0 15px;color:var(--ink);font:800 1.35rem/1.15 Georgia,serif}.open{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--line);color:var(--blue);font-size:.78rem;font-weight:900}.empty{grid-column:1/-1;padding:28px;border:1px solid var(--line);background:var(--card);color:var(--muted)}footer{padding:24px 0 42px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem}
+    @media(max-width:900px){.issues{grid-template-columns:repeat(2,minmax(0,1fr))}.brand{grid-template-columns:54px 1fr}.current{grid-column:1/-1;width:max-content}.preview iframe{transform:scale(.3)}}@media(max-width:590px){.utility span:last-child{display:none}.brand h1{font-size:2.5rem}.issues{grid-template-columns:1fr}.intro{align-items:flex-start;flex-direction:column;gap:8px}.preview{height:215px}.preview iframe{transform:scale(.3)}}
   </style>
 </head>
 <body>
   <header class="masthead">
     <div class="wrap">
-      <div class="utility">KOEPFER Industry Intelligence</div>
-      <div class="brand"><div class="mark">K</div><h1>Ausgabenarchiv<span>Der Morgenbrief</span></h1></div>
+      <div class="utility"><span>KOEPFER Industry Intelligence</span><span>Historische Ausgaben</span></div>
+      <div class="brand"><div class="mark">K</div><h1>Ausgabenarchiv<span>Der Morgenbrief</span></h1><a class="current" href="../">Aktuelle Ausgabe →</a></div>
     </div>
   </header>
   <main class="wrap">
-    <a class="back" href="../">← Zur aktuellen Ausgabe</a>
-    <div class="intro"><h2>Frühere Morgenbriefe</h2><p>Chronologisch gespeichert · neueste Ausgabe zuerst</p></div>
+    <div class="intro"><div><h2>Frühere Morgenbriefe</h2><p>Visuelle Übersicht aller archivierten Ausgaben · neueste zuerst</p></div><div class="count" id="count">Archiv wird geladen</div></div>
     <div class="issues" id="issues"><div class="empty">Archiv wird geladen …</div></div>
   </main>
   <footer><div class="wrap">Öffentliches Ausgabenarchiv · Quellenstand jeweils zum Ausgabedatum</div></footer>
   <script>
-    fetch("./index.json", { cache: "no-store" })
-      .then(response => {
-        if (!response.ok) throw new Error("Archiv nicht verfügbar");
-        return response.json();
-      })
+    const formatDate = value => {
+      const [year, month, day] = value.split("-");
+      return `${day}.${month}.${year}`;
+    };
+    fetch("./index.json", {cache:"no-store"})
+      .then(response => {if(!response.ok) throw new Error("Archiv nicht verfügbar");return response.json();})
       .then(items => {
-        const root = document.getElementById("issues");
-        const sorted = [...items].sort((a, b) => b.date.localeCompare(a.date));
-        if (!sorted.length) {
-          root.innerHTML = '<div class="empty">Noch keine archivierten Ausgaben.</div>';
-          return;
-        }
-        root.replaceChildren(...sorted.map(item => {
-          const link = document.createElement("a");
-          link.className = "issue";
-          link.href = item.file;
-          const time = document.createElement("time");
-          time.dateTime = item.date;
-          time.textContent = new Intl.DateTimeFormat("de-DE", { dateStyle: "long" }).format(new Date(`${item.date}T12:00:00Z`));
-          const title = document.createElement("b");
-          title.textContent = item.title;
-          const arrow = document.createElement("span");
-          arrow.textContent = "Öffnen →";
-          link.append(time, title, arrow);
-          return link;
+        const root=document.getElementById("issues");
+        const sorted=[...items].sort((a,b)=>b.date.localeCompare(a.date));
+        document.getElementById("count").textContent=`${sorted.length} ${sorted.length===1?"Ausgabe":"Ausgaben"}`;
+        if(!sorted.length){root.innerHTML='<div class="empty">Noch keine archivierten Ausgaben.</div>';return;}
+        root.replaceChildren(...sorted.map(item=>{
+          const link=document.createElement("a");link.className="issue";link.href=item.file;link.setAttribute("aria-label",`${item.title} vom ${formatDate(item.date)} öffnen`);
+          const preview=document.createElement("div");preview.className="preview";
+          const frame=document.createElement("iframe");frame.src=item.file;frame.loading="lazy";frame.tabIndex=-1;frame.setAttribute("aria-hidden","true");frame.title="";preview.append(frame);
+          const body=document.createElement("div");body.className="issue-body";
+          const time=document.createElement("time");time.dateTime=item.date;time.textContent=formatDate(item.date);
+          const title=document.createElement("h3");title.textContent=item.title;
+          const open=document.createElement("div");open.className="open";open.innerHTML='<span>Ausgabe öffnen</span><span>→</span>';
+          body.append(time,title,open);link.append(preview,body);return link;
         }));
       })
-      .catch(() => {
-        document.getElementById("issues").innerHTML = '<div class="empty">Archiv momentan nicht verfügbar.</div>';
-      });
+      .catch(()=>{document.getElementById("count").textContent="Nicht verfügbar";document.getElementById("issues").innerHTML='<div class="empty">Archiv momentan nicht verfügbar.</div>';});
   </script>
 </body>
 </html>
