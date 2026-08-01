@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "edition_date": "2026-07-31",
+    "article_id": "https://group.mercedes-benz.com/investors/share/outlook/",
+    "topic": "Automotive",
+    "thumbs_up": 1,
+    "thumbs_down": 0,
+    "score": 1,
+    "votes": 1
+  },
+  {
+    "edition_date": "2026-07-31",
+    "article_id": "https://www.bundesnetzagentur.de/SharedDocs/Pressemitteilungen/DE/2026/20260729_KI_VO.html",
+    "topic": "KI-Compliance",
+    "thumbs_up": 1,
+    "thumbs_down": 0,
+    "score": 1,
+    "votes": 1
+  },
+  {
+    "edition_date": "2026-07-31",
+    "article_id": "https://www.contargo.net/de/ueber-uns/aktuelles/detail/pegelstaende-am-rhein-und-kleinwasserzuschlag-1/",
+    "topic": "Logistik",
+    "thumbs_up": 0,
+    "thumbs_down": 1,
+    "score": -1,
+    "votes": 1
+  },
+  {
+    "edition_date": "2026-07-31",
+    "article_id": "request://extra/supplier/gro%C3%9F%20pr%C3%A4zisionstechnik%20gmbh",
+    "topic": "Redaktionswunsch · extra · supplier · Groß Präzisionstechnik GmbH",
+    "thumbs_up": 1,
+    "thumbs_down": 0,
+    "score": 1,
+    "votes": 1
+  },
+  {
+    "edition_date": "2026-07-31",
+    "article_id": "request://extra/topic/ppwr",
+    "topic": "Redaktionswunsch · extra · topic · PPWR",
+    "thumbs_up": 1,
+    "thumbs_down": 0,
+    "score": 1,
+    "votes": 1
+  },
+  {
+    "edition_date": "2026-07-31",
+    "article_id": "request://more/topic/maschinen%20und%20anlagenbau",
+    "topic": "Redaktionswunsch · more · topic · Maschinen und Anlagenbau",
+    "thumbs_up": 1,
+    "thumbs_down": 0,
+    "score": 1,
+    "votes": 1
+  }
+]
