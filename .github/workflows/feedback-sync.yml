@@ -2,8 +2,8 @@ name: Sync feedback summary
 
 on:
   schedule:
-    - cron: "30 4 * * *"
-    - cron: "30 5 * * *"
+    - cron: "15 4 * * *"
+    - cron: "15 5 * * *"
   workflow_dispatch:
 
 permissions:
@@ -17,10 +17,21 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Check local run window
+        id: local_time
+        run: |
+          if [ "$(TZ=Europe/Berlin date +%H)" = "06" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Check out repository
+        if: steps.local_time.outputs.run == 'true'
         uses: actions/checkout@v6
 
       - name: Fetch anonymized feedback summary
+        if: steps.local_time.outputs.run == 'true'
         env:
           SUPABASE_URL: https://zwzgbfyjqmmxzsonpdfj.supabase.co
           SUPABASE_PUBLISHABLE_KEY: sb_publishable_x2Nv1tiZg2k8A0nwNC7qhA_K2QwWpAM
@@ -39,6 +50,7 @@ jobs:
           mv feedback-summary.new.json feedback-summary.json
 
       - name: Commit changes
+        if: steps.local_time.outputs.run == 'true'
         run: |
           if git diff --quiet -- feedback-summary.json; then
             exit 0
