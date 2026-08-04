@@ -75,25 +75,6 @@ Die Funktionen müssen in jeder neuen Root-Ausgabe erhalten bleiben und nach der
 
 Testeinträge werden nur auf ausdrückliche Anweisung gelöscht. Reguläre Rückmeldungen bleiben bis zu ihrer vorgesehenen Verarbeitung erhalten.
 
-## Testumgebung
-
-Die Testumgebung liegt unter:
-
-https://koepfer-einkauf.github.io/koepfer-morgenbrief/testumgebung/
-
-Sie ist von der produktiven Root-Ausgabe getrennt. Änderungen dort dürfen die Root-Ausgabe, das produktive Archiv und die reguläre Morgenautomatisierung nicht beeinflussen.
-
-Die aktuelle Testvorlage enthält eine Leaflet-Karte. Bei einer ausdrücklich angeforderten Testausgabe werden die verwendeten News zusätzlich geografisch markiert:
-
-- jede nummerierte Meldung erhält einen Kartenpunkt
-- ein in der Quelle genannter Ort wird bevorzugt
-- andernfalls wird eine als ungefähr gekennzeichnete Landes- oder Regionsposition verwendet
-- länger laufende relevante Konflikte können als eigene Ebene erscheinen
-- überlappende Punkte werden geclustert
-- Anzahl und Zuordnung der News-Marker müssen geprüft werden
-
-Die Testumgebung ist kein Ersatz für die produktive Mastervorlage. Sie wird nur auf ausdrückliche Anweisung verwendet.
-
 ## Qualitäts- und Veröffentlichungsprüfung
 
 Nach jeder produktiven Veröffentlichung ist mindestens zu prüfen:
